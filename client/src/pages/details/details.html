@@ -1,0 +1,190 @@
+<ion-header style="background-color: #000;">
+  <ion-navbar hideBackButton>
+    <div start>
+      <img class="logo" src="assets/images/splashlogo.png" />
+      <ion-title style="transform: translateY(-5px); display: inline-block;">My account</ion-title>
+    </div>
+    <ion-buttons end>
+      <div style="display: flex">
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <button class="notificationBtn">
+          <ion-icon name="notifications"></ion-icon>
+        </button>
+      </div>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="d-flex userInfo p-l">
+    <div class="user">
+      <img style="transform: translateY(10px)" src="assets/images/user.png" />
+    </div>
+    <div class="userName">
+      <h5 class="fontWeightNormal">Suhas sharma</h5>
+      <progress-bar  [progress]="12"  [color]="'#488aff'">
+      </progress-bar>
+      <span style="font-size: small; color: grey;">12% completed</span>
+    </div>
+  </div>
+  <div>
+    <p class="p-l info">Share your details so we can you give you personalised
+      asthma action plan and more</p>
+    <div style="margin-top: 10px">
+      <ion-item>
+        <ion-label>Enable conversational form</ion-label>
+        <ion-toggle></ion-toggle>
+      </ion-item>
+    </div>
+    <ion-buttons>
+      <div class="d-flex tabLayout">
+        <button (click)="shown = 0" [class.active]="shown === 0">Personal</button>
+        <button (click)="shown = 1" [class.active]="shown === 1">Emergency</button>
+        <button (click)="shown = 2" [class.active]="shown === 2">Lifestyle</button>
+      </div>
+    </ion-buttons>
+
+    <form (ngSubmit)="onSubmit(form)" #form>
+      <div class="form" *ngIf="shown === 0">
+        <div class="mb">
+          <ion-item no-padding>
+            <ion-label stacked>Gender</ion-label>
+            <ion-select>
+              <ion-option value="female">Female</ion-option>
+              <ion-option value="male">Male</ion-option>
+            </ion-select>
+          </ion-item>
+        </div>
+        <div class="mb">
+          <ion-item  no-padding>
+            <ion-label stacked>Email Address</ion-label>
+            <ion-input type="email" placeholder="Email address" value="suhassharma@gmail.com"></ion-input>
+          </ion-item>
+        </div>
+        <div class="mb">
+          <ion-item no-padding>
+            <ion-label stacked>Birthday</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY"></ion-datetime>
+          </ion-item>
+        </div>
+
+        <div class="mb">
+          <ion-item no-padding>
+            <ion-label stacked>Contact number</ion-label>
+            <ion-input type="text" placeholder="10-digit contact number" value="+91-1234567890"></ion-input>
+          </ion-item>
+        </div>
+
+        <div class="mb">
+          <ion-item no-padding>
+            <ion-label stacked>Location</ion-label>
+            <ion-input type="text" placeholder="Enter location" value="Pune"></ion-input>
+          </ion-item>
+        </div>
+
+        <ion-label>Height</ion-label>
+        <div class="d-flex mb justify-content-between">
+          <div>
+            <ion-item no-padding>
+              <ion-input type="text" placeholder="Height in feet" value="0"></ion-input>
+            </ion-item>
+          </div>
+          <div>
+            <ion-item no-padding>
+              <ion-input type="text" placeholder="Height in inch" value="0"></ion-input>
+            </ion-item>
+          </div>
+        </div>
+
+        <ion-label>Weight</ion-label>
+        <div class="d-flex mb justify-content-between">
+          <div>
+            <ion-item no-padding>
+              <ion-input type="text" placeholder="Weight in kg" value="0"></ion-input>
+            </ion-item>
+          </div>
+          <div>
+            <ion-item no-padding>
+              <ion-input type="text" placeholder="Weight in gms" value="0"></ion-input>
+            </ion-item>
+          </div>
+        </div>
+
+        <div text-center class="mt">
+          <button (click)="shown = 1" type="submit" class="bgBlack btnRounded">Next</button>
+        </div>
+      </div>
+
+      <div class="form" *ngIf="shown === 1">
+        <div style="margin-top: 10px">
+          <ion-item no-padding no-lines no-margin>
+            <ion-label>Send regular health alerts<br> to caregiver</ion-label>
+            <ion-toggle></ion-toggle>
+          </ion-item>
+        </div>
+        <div style="margin-top: 10px">
+          <ion-item no-padding no-lines no-margin>
+            <ion-label>Schedule appoinment<br> in emergency</ion-label>
+            <ion-toggle></ion-toggle>
+          </ion-item>
+        </div><hr>
+
+        <div>
+          <h5 class="fontWeightNormal">Caregiver details</h5>
+          <div class="d-flex justify-content-between">
+            <ion-label>Primary contact</ion-label>
+            <button (click)="getDeviceContacts('Choose caregiver contact')" class="addBtn">
+              <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+            </button>
+          </div>
+
+          <div>
+            <ion-input type="text" placeholder="Full name"></ion-input>
+            <ion-input type="text" placeholder="Contact number"></ion-input>
+          </div>
+        </div><hr>
+
+        <div>
+          <div>
+            <div class="d-flex justify-content-between">
+              <ion-label>Secondary contact</ion-label>
+              <button  (click)="getDeviceContacts('Choose secondary contact')" class="addBtn">
+                <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+              </button>
+            </div>
+            <div>
+              <ion-input type="text" placeholder="Full name"></ion-input>
+              <ion-input type="text" placeholder="Contact number"></ion-input>
+            </div>
+          </div>
+          <div>
+            <div class="d-flex justify-content-between">
+              <ion-label>My GP</ion-label>
+              <button (click)="getDeviceContacts('Choose third contact')" class="addBtn">
+                <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+              </button>
+            </div>
+            <div>
+              <ion-input type="text" placeholder="Full name"></ion-input>
+              <ion-input type="text" placeholder="Contact number"></ion-input>
+            </div>
+          </div>
+        </div>
+
+        <div text-center class="mt">
+          <button (click)="shown = 2" type="submit" class="bgBlack btnRounded">Next</button>
+        </div>
+      </div>
+
+      <div padding class="form" *ngIf="shown === 2">
+        <div class="d-flex">
+          <ion-label no-padding no-margin no-lines>Physical activities</ion-label>
+          <button class="addBtn">
+            <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

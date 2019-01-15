@@ -1,0 +1,31 @@
+<ion-content padding>
+  <div class="headerText">
+    <h2 class="fontWeightNormal">Welcome Back!</h2>
+  </div>
+  <form class="form">
+    <div class="mb">
+      <ion-item no-padding>
+        <ion-label stacked>Email address</ion-label>
+        <ion-input type="email" placeholder="Email address"></ion-input>
+      </ion-item>
+    </div>
+    <div style="margin-bottom: 15px;">
+      <ion-item no-padding>
+        <ion-label stacked>Password</ion-label>
+        <ion-input type="password" placeholder="Password(8+ characters)"></ion-input>
+      </ion-item>
+    </div>
+    <button class="textGreen" style="background: transparent">Forget Password</button>
+    <div text-center class="mt">
+      <div>
+        <button class="btnRounded bgBlack" [navPush]="details">Log in</button>
+      </div>
+      <p style="font-size: medium; margin: 20px 0">or</p>
+      <div>
+        <button class="btnRounded bgGrey">Login with email</button>
+        <button class="btnRounded bgLightGrey mt">Login with facebook</button>
+      </div>
+    </div>
+
+  </form>
+</ion-content>

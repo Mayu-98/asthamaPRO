@@ -1,0 +1,35 @@
+<ion-content text-center>
+  <ion-img class="logo" src="assets/images/logo.png"></ion-img>
+
+  <ion-slides [loop]="true" [pager]="true" autoplay="1000" [centeredSlides]="true">
+    <ion-slide>
+      <div>
+        <img class="sliderImg" src="assets/images/slider1.jpg" />
+      </div>
+      <p>Learn about health and asthma</p>
+    </ion-slide>
+    <ion-slide>
+      <div>
+        <img class="sliderImg" src="assets/images/slider2.jpg"/>
+      </div>
+      <p>Makes asthma tracking easy</p>
+    </ion-slide>
+    <ion-slide>
+      <div>
+        <img class="sliderImg" src="assets/images/slider1.jpg"  />
+      </div>
+      <p>Get assistance from SIA for all your problems</p>
+    </ion-slide>
+  </ion-slides>
+
+  <div>
+    <p style="font-size: medium">Already have an account? <button [navPush]="login" class="textGreen" style="background: transparent">Log in</button></p>
+  </div>
+
+  <div class="cta">
+    <ion-buttons>
+      <button [navPush]="register" class="btn-block">Begin your journey</button>
+    </ion-buttons>
+  </div>
+</ion-content>
+

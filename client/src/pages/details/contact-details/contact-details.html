@@ -1,0 +1,12 @@
+<ion-content padding>
+  <ion-list>
+    <h5 class="fontWeightNormal">{{ heading }}</h5>
+
+    <div *ngIf="contacts">
+      <ion-item no-padding (click)="onSelect(item)" *ngFor="let item of contacts">
+        {{ item.displayName }}
+      </ion-item>
+    </div>
+
+  </ion-list>
+</ion-content>
